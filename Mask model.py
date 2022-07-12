@@ -1,7 +1,3 @@
-#!/usr/bin/env python
-# coding: utf-8
-
-# In[18]:
 
 
 import pathlib 
@@ -16,7 +12,6 @@ import matplotlib.pyplot as plt
 
 
 
-# In[2]:
 
 
 dataset_path = pathlib.Path('E:/CS/Robotics club/face mask/Face Mask Dataset')
@@ -25,10 +20,9 @@ Train_path = 'E:/CS/Robotics club/face mask/Face Mask Dataset/Train'
 Val_path = 'E:/CS/Robotics club/face mask/Face Mask Dataset/Validation'
 
 
-# In[26]:
 
 
-#Image data generatro is a class in keras that assembles data augmentation methods 
+#Image data generator is a class in keras that assembles data augmentation methods 
 #augmentation means increasing the data or becoming larger rather than collecting more images manually 
 # rescale multiplies every pixel in the preprocessing image 
 # shear range makes the computer vision see the images from differenct angels as the human eye behavior 
@@ -47,7 +41,6 @@ test_set = test_datagen.flow_from_directory(Test_path, target_size = (128, 128),
 classes=["WithoutMask","WithMask"])
 
 
-# In[8]:
 
 
 #function to convert the image into array 
@@ -63,7 +56,6 @@ def GetXY(gen):
     return (x,y)
 
 
-# In[ ]:
 
 
 #assign the training and testing data in variables after augmentation and becoming array 
@@ -72,10 +64,9 @@ valX,valY = GetXY(validation_set)
 testX,testY = GetXY(test_set)
 
 
-# In[27]:
 
 
-#the convolution procuders has three repeated steps for 3 times (conv2D, Maxpooling,Dropout)
+#the convolution procedures has three repeated steps for 3 times (conv2D, Maxpooling,Dropout)
 #1st convolution 
 input_data = Input(shape=(128, 128, 3))
 x = Conv2D(32, (3, 3), activation="relu")(input_data) #ReLU takes any value greater than 0 without change; otherwise, the value is 0
@@ -101,7 +92,6 @@ cnn.compile(optimizer = 'adam', loss = 'binary_crossentropy', metrics = ['accura
 cnn.summary()
 
 
-# In[11]:
 
 
 #ReduceLROnPlateau is for reducing the learning rate when the model stops improving during the training
@@ -110,7 +100,6 @@ history = cnn.fit(trainX, trainY, epochs = 15, verbose = 1, batch_size=32, valid
 #batch size is the number of samples that are chosen for training with each epoch
 
 
-# In[15]:
 
 
 cnn.evaluate(testX, testY, verbose=2)
@@ -124,13 +113,11 @@ print(confusion_matrix(testY, predict))
 #support is the true samples in the specified class
 
 
-# In[16]:
 
 
 print('Accuracy:', accuracy_score(testY, predict))
 
 
-# In[23]:
 
 
 #loss value vs epochs graph
@@ -143,7 +130,6 @@ plt.legend(['train', 'test'], loc='upper left')
 plt.show()
 
 
-# In[25]:
 
 
 # accuracy vs epochs graph 
@@ -157,7 +143,6 @@ plt.show()
 #according to both of them, the model is neither underfitting nor overfitting 
 
 
-# In[ ]:
 
 
 
