@@ -14,7 +14,7 @@ import matplotlib.pyplot as plt
 
 
 
-dataset_path = pathlib.Path('E:/CS/Robotics club/face mask/Face Mask Dataset')
+dataset_path = pathlib.Path('E:/CS/Robotics club/face mask/Face Mask Dataset') #it depends on your file's path 
 Test_path = 'E:/CS/Robotics club/face mask/Face Mask Dataset/Test'
 Train_path = 'E:/CS/Robotics club/face mask/Face Mask Dataset/Train'
 Val_path = 'E:/CS/Robotics club/face mask/Face Mask Dataset/Validation'
